@@ -1,0 +1,25 @@
+
+syntax = "proto3";
+option java_multiple_files = true;
+option java_outer_classname = "lightsControlServiceImpl";
+package lightsControl;
+
+
+service lightsControlService {
+	// Bidirectional Streaming RPC
+    rpc readRoomLightStatus(stream LightRequest) returns (stream LightResponse) {};
+}
+
+message LightRequest {
+	int32 roomNumber = 1;
+}
+
+message LightResponse {
+	int32 roomNumber = 1;
+	bool lightOn = 2;
+	bool roomNotFound = 3;
+}
+
+
+
+

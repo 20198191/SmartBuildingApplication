@@ -1,0 +1,18 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_outer_classname = "heatingControlServiceImpl";
+package heatingControl;
+
+service heatingControlService {
+	// Client Streaming RPC
+    rpc changeHeatingStatus(stream HeatingRequest) returns (HeatingResponse) {};
+}
+//we send more than one message to the server.
+message HeatingRequest {
+	int32 heatingNumber = 1;
+	bool turnOn = 2;
+}
+//the server only returns one message.
+message HeatingResponse {
+	string heatingStatus = 1;
+}

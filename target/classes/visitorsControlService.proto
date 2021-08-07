@@ -1,0 +1,19 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_outer_classname = "visitorsControlServiceImpl";
+
+package visitorsControl;
+
+service visitorsControlService {
+    // We create the unary RPC method sending only one message ad getting another message as response.
+    rpc registerVisitor(VisitorRequest) returns (GuestBookServiceResponse) {};
+}
+
+message VisitorRequest {
+	string guestName = 1;
+}
+
+message GuestBookServiceResponse {
+	string confirmationMessage = 1;
+}
+

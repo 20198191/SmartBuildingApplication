@@ -1,0 +1,17 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_outer_classname = "roomAvailabilityControlServiceImpl";
+package roomAvailabilityControl;
+
+service roomAvailabilityControlService {
+	// Server Streaming RPC
+    rpc getRoomStatus(EmptyRequest) returns (stream RoomResponse) {};
+}
+//we send an empty request just to get a response
+message EmptyRequest {
+}
+//it will response with the int roomNumber and the String roomStatus
+message RoomResponse {
+	int32 roomNumber = 1;
+	string roomStatus = 2;
+}
